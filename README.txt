@@ -1,11 +1,11 @@
-Detta projekt använder Node.js runtime environment, Vite som lokal utvecklingsserver, React.js som bibliotek och Tailwind CSS som ramverk.
+Detta projekt använder Node.js runtime environment, Vite byggmiljön och React och Tailwind ramverken.
 
 Kör "npm install" i terminalen för att automatiskt installera alla dependencies för detta projekt i din lokala projektmapp.
 
 Kör "npm run dev" för att starta den Vite-drivna utvecklingsservern.
 
-Kör "vite build" för att bygga en statisk produktionsredo applikation av projektet.
-Finns även "vite preview" och "vite optimize".
+Kör "npm run build" för att bygga en statisk produktionsredo applikation av projektet.
+Finns även "npm run preview".
 
 VSCode extensions till detta projekt:
 	- Monokai Pro (estetiskt)
