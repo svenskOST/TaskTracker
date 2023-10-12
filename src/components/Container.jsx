@@ -2,7 +2,7 @@ import './style/container.css'
 import { useState } from 'react'
 import Header from './Header'
 import Tasks from './Tasks'
-import AddTask from './AddTask'
+import Form from './Form'
 
 function Container() {
    const [showForm, setShowForm] = useState(false)
@@ -48,7 +48,7 @@ function Container() {
    return (
       <div className='container'>
          <Header onAdd={() => setShowForm(!showForm)} title='Att göra' showForm={showForm} />
-         {showForm && <AddTask onAdd={addTask} />}
+         {showForm && <Form onAdd={addTask} />}
          {tasks.length > 0 ? (
             <Tasks
                tasks={tasks}
