@@ -12,14 +12,27 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+.background {
+  position: absolute;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-  max-width: 500px;
-  margin: 30px auto;
+  width: 70%;
+  max-width: 600px;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid steelblue;
+  border: 3px solid steelblue;
+  background-color: rgba(70, 130, 180, 0.2);
+  margin: 45px 45px;
   padding: 30px;
   border-radius: 5px;
 }
@@ -29,6 +42,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  padding: 0 20px 0 20px;
 }
 
 .btn {
@@ -62,7 +76,7 @@ body {
   background: #f4f4f4;
   margin: 5px;
   padding: 10px 20px;
-  cursor: pointer;
+  border-radius: 5px;
 }
 
 .task.reminder {
@@ -85,6 +99,7 @@ body {
 
 .form-control label {
   display: block;
+  margin-left: 10px;
 }
 
 .form-control input {
