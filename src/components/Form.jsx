@@ -1,8 +1,8 @@
-import './style/addTask.css'
+import './style/form.css'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
-function AddTask({ onAdd }) {
+function Form({ onAdd }) {
    const [text, setText] = useState('')
    const [day, setDay] = useState('')
    const [reminder, setReminder] = useState(false)
@@ -66,8 +66,8 @@ function AddTask({ onAdd }) {
    )
 }
 
-AddTask.propTypes = {
+Form.propTypes = {
    onAdd: PropTypes.func,
 }
 
-export default AddTask
+export default Form
