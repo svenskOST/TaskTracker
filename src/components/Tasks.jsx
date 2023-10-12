@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import Task from './Task'
+import PropTypes from 'prop-types'
 
 function Tasks({ tasks, onDelete, onToggle }) {
    return (
@@ -9,6 +9,12 @@ function Tasks({ tasks, onDelete, onToggle }) {
          ))}
       </>
    )
+}
+
+Tasks.propTypes = {
+   tasks: PropTypes.array,
+   onDelete: PropTypes.func,
+   onToggle: PropTypes.func,
 }
 
 export default Tasks

@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
-import "./style/addTask.css"
+import './style/addTask.css'
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 
 function AddTask({ onAdd }) {
    const [text, setText] = useState('')
@@ -64,6 +64,10 @@ function AddTask({ onAdd }) {
          <input className='btn btn-submit' type='submit' value='Spara' />
       </form>
    )
+}
+
+AddTask.propTypes = {
+   onAdd: PropTypes.func,
 }
 
 export default AddTask

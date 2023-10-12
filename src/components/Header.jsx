@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import './style/header.css'
-import PropTypes from 'prop-types'
 import Button from './Button'
+import PropTypes from 'prop-types'
 
 function Header({ title, onAdd, showForm }) {
    return (
@@ -18,6 +17,8 @@ function Header({ title, onAdd, showForm }) {
 
 Header.propTypes = {
    title: PropTypes.string,
+   onAdd: PropTypes.string,
+   showForm: PropTypes.bool,
 }
 
 export default Header

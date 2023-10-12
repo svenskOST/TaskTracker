@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import './style/task.css'
 import { HiOutlineXMark } from 'react-icons/hi2'
+import PropTypes from 'prop-types'
 
 function Task({ task, onDelete, onToggle }) {
    return (
@@ -18,6 +18,12 @@ function Task({ task, onDelete, onToggle }) {
          <p>{task.day}</p>
       </div>
    )
+}
+
+Task.propTypes = {
+   task: PropTypes.object,
+   onDelete: PropTypes.func,
+   onToggle: PropTypes.func,
 }
 
 export default Task
