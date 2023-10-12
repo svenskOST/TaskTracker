@@ -2,11 +2,15 @@
 import PropTypes from 'prop-types'
 import Button from './Button'
 
-function Header({ title, onAdd }) {
+function Header({ title, onAdd, showForm }) {
    return (
       <header className='header'>
          <h1>{title}</h1>
-         <Button color='green' text='Lägg till' onClick={onAdd} />
+         <Button
+            color={`${!showForm ? 'green' : 'red'}`}
+            text={`${!showForm ? 'Lägg till' : 'Avbryt'}`}
+            onClick={onAdd}
+         />
       </header>
    )
 }

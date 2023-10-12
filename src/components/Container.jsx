@@ -46,7 +46,7 @@ function Container() {
 
    return (
       <div className='container'>
-         <Header onAdd={() => setShowForm(!showForm)} title='Att göra' />
+         <Header onAdd={() => setShowForm(!showForm)} title='Att göra' showForm={showForm} />
          {showForm && <AddTask onAdd={addTask} />}
          {tasks.length > 0 ? (
             <Tasks

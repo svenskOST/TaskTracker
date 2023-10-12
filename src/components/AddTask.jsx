@@ -9,9 +9,9 @@ function AddTask({ onAdd }) {
    function onSubmit(e) {
       e.preventDefault()
 
-      if(!text){
-        alert('Var vänlig ange aktivitet')
-        return
+      if (!text) {
+         alert('Var vänlig ange aktivitet')
+         return
       }
 
       onAdd({ text, day, reminder })
@@ -24,8 +24,9 @@ function AddTask({ onAdd }) {
    return (
       <form className='add-form' onSubmit={onSubmit}>
          <div className='form-control'>
-            <label>Aktivitet</label>
+            <label htmlFor='1'>Aktivitet</label>
             <input
+               id='1'
                type='text'
                placeholder='Ange aktivitet'
                value={text}
@@ -33,8 +34,9 @@ function AddTask({ onAdd }) {
             />
          </div>
          <div className='form-control'>
-            <label>Dag & tid</label>
+            <label htmlFor='2'>Dag & tid</label>
             <input
+               id='2'
                type='text'
                placeholder='Ange dag & tid'
                value={day}
@@ -42,8 +44,9 @@ function AddTask({ onAdd }) {
             />
          </div>
          <div className='form-control form-control-check'>
-            <label>Påminnelse</label>
+            <label htmlFor='3'>Påminnelse</label>
             <input
+               id='3'
                type='checkbox'
                checked={reminder}
                value={reminder}
