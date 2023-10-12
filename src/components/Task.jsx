@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import './style/task.css'
 import { HiOutlineXMark } from 'react-icons/hi2'
 
 function Task({ task, onDelete, onToggle }) {

@@ -1,3 +1,4 @@
+import './style/container.css'
 import { useState } from 'react'
 import Header from './Header'
 import Tasks from './Tasks'
