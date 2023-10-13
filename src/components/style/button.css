@@ -12,10 +12,6 @@
     font-family: inherit;
  }
  
- .btn-submit {
-    margin-bottom: 20px;
- }
- 
  .btn:focus {
     outline: none;
  }

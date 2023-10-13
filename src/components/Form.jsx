@@ -1,10 +1,13 @@
 import './style/form.css'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import Submit from './Submit'
+import TextControl from './TextControl'
+import CheckControl from './CheckControl'
 
 function Form({ onAdd }) {
    const [text, setText] = useState('')
-   const [day, setDay] = useState('')
+   const [date, setDate] = useState('')
    const [reminder, setReminder] = useState(false)
 
    function onSubmit(e) {
@@ -15,53 +18,21 @@ function Form({ onAdd }) {
          return
       }
 
-      onAdd({ text, day, reminder })
+      onAdd({ text, date, reminder })
 
       setText('')
-      setDay('')
+      setDate('')
       setReminder(false)
    }
 
    return (
-      <form className='add-form' onSubmit={onSubmit}>
-         <div className='form-control'>
-            <label htmlFor='task'>
-               <input
-                  id='task'
-                  type='text'
-                  placeholder='Aktivitet'
-                  value={text}
-                  onChange={(e) => setText(e.target.value)}
-               />
-               <span>Aktivitet</span>
-            </label>
-         </div>
-         <div className='form-control'>
-            <label htmlFor='date'>
-               <input
-                  id='date'
-                  type='text'
-                  placeholder='Dag & tid'
-                  value={day}
-                  onChange={(e) => setDay(e.target.value)}
-               />
-               <span>Dag & tid</span>
-            </label>
-         </div>
-         <div className='form-control-check'>
-            <label htmlFor='reminder'>
-               <span>Påminnelse</span>
-               <input
-                  id='reminder'
-                  type='checkbox'
-                  checked={reminder}
-                  value={reminder}
-                  onChange={(e) => setReminder(e.currentTarget.checked)}
-               />
-            </label>
-         </div>
+      <form className='form' onSubmit={onSubmit}>
+         <TextControl id='task' placeholder='Aktivitet' value={text} setVal={setText} />
+         <TextControl id='date' placeholder='Datum' value={date} setVal={setDate} />
+         
+         <CheckControl id='reminder' isChecked={reminder} setCheck={setReminder} />
 
-         <input className='btn btn-submit' type='submit' value='Spara' />
+         <Submit value='Spara' />
       </form>
    )
 }

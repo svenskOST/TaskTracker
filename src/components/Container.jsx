@@ -10,20 +10,20 @@ function Container() {
       {
          id: 1,
          text: 'Visa utkast av dummy sida för Martin',
-         day: '12:e Okt vid 13:30',
+         date: '12:e Okt vid 13:30',
          reminder: true,
       },
       {
          id: 2,
          text: 'Göra klart affärsplanen',
-         day: '20:e Okt vid 23:59',
+         date: '20:e Okt vid 23:59',
          reminder: true,
       },
       {
          id: 3,
          text: 'Maya födelsedag',
-         day: '28:e Okt',
-         reminder: true,
+         date: '28:e Okt',
+         reminder: false,
       },
    ])
 

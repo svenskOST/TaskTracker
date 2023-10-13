@@ -17,7 +17,7 @@ function Header({ title, onAdd, showForm }) {
 
 Header.propTypes = {
    title: PropTypes.string,
-   onAdd: PropTypes.string,
+   onAdd: PropTypes.func,
    showForm: PropTypes.bool,
 }
 
