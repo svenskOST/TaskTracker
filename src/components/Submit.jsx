@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import './style/submit.css'
 
 function Submit({ value }) {
    return (

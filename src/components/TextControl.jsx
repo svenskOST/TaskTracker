@@ -5,7 +5,7 @@ function TextControl({ id, placeholder, value, setVal }) {
       <div className='relative mt-5 h-10 px-1'>
          <label className='border-b-2 border-black pb-1' htmlFor={id}>
             <input
-               className='h-full w-full rounded-md bg-transparent px-2 font-sans text-lg outline-none'
+               className='h-full w-full bg-transparent px-2 font-sans text-lg outline-none'
                id={id}
                type='text'
                placeholder={placeholder}
