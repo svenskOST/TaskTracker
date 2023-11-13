@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import './style/textControl.css'
 
 function TextControl({ id, placeholder, value, setVal }) {
    return (
