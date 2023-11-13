@@ -12,9 +12,6 @@ function TextControl({ id, placeholder, value, setVal }) {
                value={value}
                onChange={(e) => setVal(e.target.value)}
             />
-            <span className='absolute bottom-0 left-0 text-lg'>
-               {placeholder}
-            </span>
          </label>
       </div>
    )

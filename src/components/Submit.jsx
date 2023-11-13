@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 function Submit({ value }) {
    return (
       <input
-         className='m-1 mb-5 inline-block cursor-pointer rounded-md bg-black px-5 py-3 text-base text-white transition-transform hover:scale-105 active:scale-90'
+         className='mx-5 mt-3 mb-5 inline-block cursor-pointer rounded-md bg-black px-5 py-3 text-base text-white transition-transform hover:scale-105 active:scale-90'
          type='submit'
          value={value}
       />

@@ -23,6 +23,35 @@ function Container() {
       fetchData()
    }, [])
 
+   async function addTask(task) {
+      const newId = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1
+      const newTask = { id: newId, ...task }
+
+      setTasks([...tasks, newTask])
+
+      try {
+         const response = await fetch(
+            `http://localhost:8080/My%20Projects/Task-Tracker/api.php?userid=1?text=${text}?date=${date}?reminder=${reminder}`,
+            {
+               method: 'POST',
+               headers: { 'Content-Type': 'application/json' },
+            },
+         )
+
+         if (!response.ok) {
+            setTasks((prevTasks) => [
+               ...prevTasks,
+               { id: id, text: 'Failed adding task' },
+            ])
+         }
+      } catch (error) {
+         setTasks((prevTasks) => [
+            ...prevTasks,
+            { id: id, text: 'Network error while adding task' },
+         ])
+      }
+   }
+
    async function removeTask(id) {
       setTasks(tasks.filter((task) => task.id !== id))
 
@@ -44,15 +73,9 @@ function Container() {
       } catch (error) {
          setTasks((prevTasks) => [
             ...prevTasks,
-            { id: id, text: 'Network error during removal' },
+            { id: taskId, text: 'Network error during removal' },
          ])
       }
-   }
-
-   function addTask(task) {
-      const id = Math.floor(Math.random() * 10000) + 1
-      const newTask = { id, ...task }
-      setTasks([...tasks, newTask])
    }
 
    function toggleReminder(id) {

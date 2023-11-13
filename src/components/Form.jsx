@@ -30,7 +30,7 @@ function Form({ onAdd }) {
          onSubmit={onSubmit}
       >
          <TextControl
-            id='task'
+            id='text'
             placeholder='Aktivitet'
             value={text}
             setVal={setText}

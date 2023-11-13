@@ -4,7 +4,7 @@ function CheckControl({ id, isChecked, setCheck }) {
    return (
       <div className='mt-5 flex h-10 w-full items-center justify-center px-1'>
          <label
-            className='-mt-2 flex h-full items-center justify-between'
+            className='flex h-full items-center justify-between'
             htmlFor='reminder'
          >
             <span className='mr-3'>Påminnelse</span>
