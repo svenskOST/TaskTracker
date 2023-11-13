@@ -1,4 +1,3 @@
-import './style/form.css'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import Submit from './Submit'
@@ -26,11 +25,28 @@ function Form({ onAdd }) {
    }
 
    return (
-      <form className='form' onSubmit={onSubmit}>
-         <TextControl id='task' placeholder='Aktivitet' value={text} setVal={setText} />
-         <TextControl id='date' placeholder='Datum' value={date} setVal={setDate} />
-         
-         <CheckControl id='reminder' isChecked={reminder} setCheck={setReminder} />
+      <form
+         className='mb-10 flex flex-col rounded-md border-2 border-black bg-[#f4f4f4] px-4'
+         onSubmit={onSubmit}
+      >
+         <TextControl
+            id='task'
+            placeholder='Aktivitet'
+            value={text}
+            setVal={setText}
+         />
+         <TextControl
+            id='date'
+            placeholder='Datum'
+            value={date}
+            setVal={setDate}
+         />
+
+         <CheckControl
+            id='reminder'
+            isChecked={reminder}
+            setCheck={setReminder}
+         />
 
          <Submit value='Spara' />
       </form>

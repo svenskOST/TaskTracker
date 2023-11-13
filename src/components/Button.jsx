@@ -1,10 +1,9 @@
-import './style/button.css'
 import PropTypes from 'prop-types'
 
 function Button({ color, text, onClick }) {
    return (
       <button
-         className='btn'
+         className='m-1 inline-block cursor-pointer rounded-md px-5 py-3 text-base text-white transition-transform hover:scale-110 active:scale-90'
          style={{ backgroundColor: color }}
          onClick={onClick}
       >

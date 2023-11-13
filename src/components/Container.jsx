@@ -1,4 +1,3 @@
-import './style/container.css'
 import { useState } from 'react'
 import Header from './Header'
 import Tasks from './Tasks'
@@ -46,8 +45,12 @@ function Container() {
    }
 
    return (
-      <div className='container'>
-         <Header onAdd={() => setShowForm(!showForm)} title='Att göra' showForm={showForm} />
+      <div className='min-h-72 m-11 w-3/4 max-w-screen-sm rounded-md border-[3px] border-[steelblue] bg-[rgba(70,130,180,0.2)] p-8'>
+         <Header
+            onAdd={() => setShowForm(!showForm)}
+            title='Att göra'
+            showForm={showForm}
+         />
          {showForm && <Form onAdd={addTask} />}
          {tasks.length > 0 ? (
             <Tasks

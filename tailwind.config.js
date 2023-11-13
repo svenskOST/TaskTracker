@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      "sans": ["Titillium Web"]
+      "sans": ["Poppins"]
     }
   },
   plugins: [],

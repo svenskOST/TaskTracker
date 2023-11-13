@@ -1,14 +1,15 @@
-import './style/task.css'
 import { HiOutlineXMark } from 'react-icons/hi2'
 import PropTypes from 'prop-types'
 
 function Task({ task, onDelete, onToggle }) {
    return (
       <div
-         className={`task ${task.reminder ? 'reminder' : ''}`}
+         className={`mx-1 my-2 rounded-md bg-[#f4f4f4] px-5 py-3 ${
+            task.reminder ? ' border-l-4 border-[green]' : ''
+         }`}
          onDoubleClick={() => onToggle(task.id)}
       >
-         <h3>
+         <h3 className='flex select-none items-center justify-between'>
             {task.text}{' '}
             <HiOutlineXMark
                style={{ color: 'red', cursor: 'pointer' }}

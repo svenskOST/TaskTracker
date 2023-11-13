@@ -1,12 +1,15 @@
-import './style/checkControl.css'
 import PropTypes from 'prop-types'
 
 function CheckControl({ id, isChecked, setCheck }) {
    return (
-      <div className='checkControl'>
-         <label htmlFor='reminder'>
-            <span>Påminnelse</span>
+      <div className='mt-5 flex h-10 w-full items-center justify-center px-1'>
+         <label
+            className='-mt-2 flex h-full items-center justify-between'
+            htmlFor='reminder'
+         >
+            <span className='mr-3'>Påminnelse</span>
             <input
+               className='aspect-square w-4'
                id={id}
                type='checkbox'
                checked={isChecked}
