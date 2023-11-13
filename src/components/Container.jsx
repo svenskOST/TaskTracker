@@ -8,13 +8,14 @@ function Container() {
    const [tasks, setTasks] = useState([])
 
    useEffect(() => {
-      const fetchData = async () => {
+      async function fetchData() {
          try {
-            const response = await fetch('http://localhost:8080/My%20Projects/Task-Tracker/api.php')
+            const response = await fetch(
+               'http://localhost:8080/My%20Projects/Task-Tracker/api.php',
+            )
             const data = await response.json()
             setTasks(data)
-         }
-         catch (error) {
+         } catch (error) {
             console.error('Error fetching data:', error)
          }
       }
@@ -22,14 +23,36 @@ function Container() {
       fetchData()
    }, [])
 
+   async function removeTask(id) {
+      setTasks(tasks.filter((task) => task.id !== id))
+
+      try {
+         const response = await fetch(
+            `http://localhost:8080/My%20Projects/Task-Tracker/api.php?id=${id}`,
+            {
+               method: 'DELETE',
+               headers: { 'Content-Type': 'application/json' },
+            },
+         )
+
+         if (!response.ok) {
+            setTasks((prevTasks) => [
+               ...prevTasks,
+               { id: id, text: 'Task removal failed' },
+            ])
+         }
+      } catch (error) {
+         setTasks((prevTasks) => [
+            ...prevTasks,
+            { id: id, text: 'Network error during removal' },
+         ])
+      }
+   }
+
    function addTask(task) {
       const id = Math.floor(Math.random() * 10000) + 1
       const newTask = { id, ...task }
       setTasks([...tasks, newTask])
-   }
-
-   function deleteTask(id) {
-      setTasks(tasks.filter((task) => task.id !== id))
    }
 
    function toggleReminder(id) {
@@ -51,7 +74,7 @@ function Container() {
          {tasks.length > 0 ? (
             <Tasks
                tasks={tasks}
-               onDelete={deleteTask}
+               onRemove={removeTask}
                onToggle={toggleReminder}
             />
          ) : (

@@ -1,7 +1,7 @@
 import { HiOutlineXMark } from 'react-icons/hi2'
 import PropTypes from 'prop-types'
 
-function Task({ task, onDelete, onToggle }) {
+function Task({ task, onRemove, onToggle }) {
    return (
       <div
          className={`mx-1 my-2 rounded-md bg-[#f4f4f4] px-5 py-3 ${
@@ -13,7 +13,7 @@ function Task({ task, onDelete, onToggle }) {
             {task.text}{' '}
             <HiOutlineXMark
                style={{ color: 'red', cursor: 'pointer' }}
-               onClick={() => onDelete(task.id)}
+               onClick={() => onRemove(task.id)}
             />
          </h3>
          <p>{task.date}</p>
@@ -23,7 +23,7 @@ function Task({ task, onDelete, onToggle }) {
 
 Task.propTypes = {
    task: PropTypes.object,
-   onDelete: PropTypes.func,
+   onRemove: PropTypes.func,
    onToggle: PropTypes.func,
 }
 
