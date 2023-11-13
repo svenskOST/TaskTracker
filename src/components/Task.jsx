@@ -9,7 +9,7 @@ function Task({ task, onDelete, onToggle }) {
          }`}
          onDoubleClick={() => onToggle(task.id)}
       >
-         <h3 className='flex select-none items-center justify-between'>
+         <h3 className='flex select-none items-center justify-between text-xl'>
             {task.text}{' '}
             <HiOutlineXMark
                style={{ color: 'red', cursor: 'pointer' }}

@@ -1,30 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './Header'
 import Tasks from './Tasks'
 import Form from './Form'
 
 function Container() {
    const [showForm, setShowForm] = useState(false)
-   const [tasks, setTasks] = useState([
-      {
-         id: 1,
-         text: 'Visa utkast av dummy sida för Martin',
-         date: '12:e Okt vid 13:30',
-         reminder: true,
-      },
-      {
-         id: 2,
-         text: 'Göra klart affärsplanen',
-         date: '20:e Okt vid 23:59',
-         reminder: true,
-      },
-      {
-         id: 3,
-         text: 'Maya födelsedag',
-         date: '28:e Okt',
-         reminder: false,
-      },
-   ])
+   const [tasks, setTasks] = useState([])
+
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const response = await fetch('http://localhost:8080/My%20Projects/Task-Tracker/api.php')
+            const data = await response.json()
+            setTasks(data)
+         }
+         catch (error) {
+            console.error('Error fetching data:', error)
+         }
+      }
+
+      fetchData()
+   }, [])
 
    function addTask(task) {
       const id = Math.floor(Math.random() * 10000) + 1
