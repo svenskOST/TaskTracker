@@ -23,32 +23,27 @@ function Container() {
       fetchData()
    }, [])
 
-   async function addTask(task) {
-      const newId = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1
-      const newTask = { id: newId, ...task }
-
-      setTasks([...tasks, newTask])
-
+   async function addTask(newTask) {
       try {
          const response = await fetch(
-            `http://localhost:8080/My%20Projects/Task-Tracker/api.php?userid=1?text=${text}?date=${date}?reminder=${reminder}`,
+            'http://localhost:8080/My%20Projects/Task-Tracker/api.php',
             {
                method: 'POST',
                headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify(newTask),
             },
          )
 
          if (!response.ok) {
-            setTasks((prevTasks) => [
-               ...prevTasks,
-               { id: id, text: 'Failed adding task' },
-            ])
+            console.error('Failed adding task')
+            return
          }
+
+         const updatedTasks = await response.json()
+         setTasks(updatedTasks)
+
       } catch (error) {
-         setTasks((prevTasks) => [
-            ...prevTasks,
-            { id: id, text: 'Network error while adding task' },
-         ])
+         console.error('Network error while adding task:', error)
       }
    }
 
@@ -89,7 +84,7 @@ function Container() {
    return (
       <div className='min-h-72 m-11 w-3/4 max-w-screen-sm rounded-md border-[3px] border-[steelblue] bg-[rgba(70,130,180,0.2)] p-8'>
          <Header
-            onAdd={() => setShowForm(!showForm)}
+            onToggle={() => setShowForm(!showForm)}
             title='Att göra'
             showForm={showForm}
          />

@@ -16,7 +16,7 @@ function Task({ task, onRemove, onToggle }) {
                onClick={() => onRemove(task.id)}
             />
          </h3>
-         <p>{task.date}</p>
+         <p className='select-none'>{task.date}</p>
       </div>
    )
 }
