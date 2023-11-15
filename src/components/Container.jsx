@@ -41,7 +41,6 @@ function Container() {
 
          const updatedTasks = await response.json()
          setTasks(updatedTasks)
-
       } catch (error) {
          console.error('Network error while adding task:', error)
       }
@@ -88,7 +87,7 @@ function Container() {
             title='Att göra'
             showForm={showForm}
          />
-         {showForm && <Form onAdd={addTask} />}
+         <Form showForm={showForm} onAdd={addTask} />
          {tasks.length > 0 ? (
             <Tasks
                tasks={tasks}

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 function Task({ task, onRemove, onToggle }) {
    return (
       <div
-         className={`mx-1 my-2 rounded-md bg-[#f4f4f4] px-5 py-3 border-[green] transition-[border-left-width] duration-[150ms] ease-in-out ${
-            task.reminder ? ' border-l-4' : 'border-l-0'
+         className={`mx-1 my-2 rounded-md border-[green] bg-[#f4f4f4] px-5 py-3 transition-[border-left-width] duration-[150ms] ease-in-out ${
+            task.reminder ? 'border-l-4' : 'border-l-0'
          }`}
          onDoubleClick={() => onToggle(task.id)}
       >
