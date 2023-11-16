@@ -7,7 +7,7 @@ function Task({ task, onRemove, onToggle }) {
          className={`mx-1 my-2 rounded-md border-[green] bg-[#f4f4f4] px-5 py-3 transition-[border-left-width] duration-[150ms] ease-in-out ${
             task.reminder ? 'border-l-4' : 'border-l-0'
          }`}
-         onDoubleClick={() => onToggle(task.id)}
+         onDoubleClick={() => onToggle(task.id, task.reminder)}
       >
          <h3 className='flex select-none items-center justify-between text-xl'>
             {task.text}{' '}

@@ -23,6 +23,36 @@ function Container() {
       fetchData()
    }, [])
 
+   async function toggleReminder(id, reminder) {
+      setTasks(
+         tasks.map((task) =>
+            task.id === id ? { ...task, reminder: !reminder } : task,
+         ),
+      )
+
+      try {
+         const response = await fetch(
+            `http://localhost:8080/My%20Projects/Task-Tracker/api.php?id=${id}&reminder=${!reminder}`,
+            {
+               method: 'PATCH',
+               headers: { 'Content-Type': 'application/json' },
+            },
+         )
+
+         if (!response.ok) {
+            setTasks((prevTasks) => [
+               ...prevTasks,
+               { id: id, text: 'Failed toggling reminder' },
+            ])
+         }
+      } catch (error) {
+         setTasks((prevTasks) => [
+            ...prevTasks,
+            { id: id, text: 'Network error while toggling reminder'},
+         ])
+      }
+   }
+
    async function addTask(newTask) {
       try {
          const response = await fetch(
@@ -67,17 +97,9 @@ function Container() {
       } catch (error) {
          setTasks((prevTasks) => [
             ...prevTasks,
-            { id: taskId, text: 'Network error during removal' },
+            { id: id, text: 'Network error during removal' },
          ])
       }
-   }
-
-   function toggleReminder(id) {
-      setTasks(
-         tasks.map((task) =>
-            task.id === id ? { ...task, reminder: !task.reminder } : task,
-         ),
-      )
    }
 
    return (
