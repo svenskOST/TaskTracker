@@ -8,24 +8,6 @@ function Form({ showForm, onAdd }) {
    const [text, setText] = useState('')
    const [date, setDate] = useState('')
    const [reminder, setReminder] = useState(false)
-   
-   var dynamicFitHeight
-
-   useEffect(() => {
-      const form = document.getElementsByTagName('form')[0]
-
-      form.style.height = 'fit-content'
-      form.style.visibility = 'hidden'
-      form.style.position = 'absolute'
-
-      dynamicFitHeight = form.clientHeight
-
-      form.style.height = '0'
-      form.style.visibility = 'visible'
-      form.style.position = 'relative'
-      
-      console.log(dynamicFitHeight)
-   }, [])
 
    function onSubmit(e) {
       e.preventDefault()
@@ -44,8 +26,8 @@ function Form({ showForm, onAdd }) {
 
    return (
       <form
-         className={`flex flex-col overflow-hidden rounded-md border-black bg-[#f4f4f4] px-4 ${
-            showForm ? 'mb-10 h-[' + dynamicFitHeight + 'px] border-2' : 'mb-0 h-0 border-0'
+         className={`overflow-hidden rounded-md border-black bg-[#f4f4f4] px-4 ${
+            showForm ? 'mb-10 h-[260px] border-2' : 'mb-0 h-0 border-0'
          }`}
          style={{
             transition: showForm
@@ -54,26 +36,28 @@ function Form({ showForm, onAdd }) {
          }}
          onSubmit={onSubmit}
       >
-         <TextControl
-            id='text'
-            placeholder='Aktivitet'
-            value={text}
-            setVal={setText}
-         />
-         <TextControl
-            id='date'
-            placeholder='Datum'
-            value={date}
-            setVal={setDate}
-         />
+         <div className='flex flex-col'>
+            <TextControl
+               id='text'
+               placeholder='Aktivitet'
+               value={text}
+               setVal={setText}
+            />
+            <TextControl
+               id='date'
+               placeholder='Datum'
+               value={date}
+               setVal={setDate}
+            />
 
-         <CheckControl
-            id='reminder'
-            isChecked={reminder}
-            setCheck={setReminder}
-         />
+            <CheckControl
+               id='reminder'
+               isChecked={reminder}
+               setCheck={setReminder}
+            />
 
-         <Submit value='Spara' />
+            <Submit value='Spara' />
+         </div>
       </form>
    )
 }
