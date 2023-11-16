@@ -25,40 +25,39 @@ function Form({ showForm, onAdd }) {
    }
 
    return (
-      <form
-         className={`overflow-hidden rounded-md border-black bg-[#f4f4f4] px-4 ${
-            showForm ? 'mb-10 h-[260px] border-2' : 'mb-0 h-0 border-0'
+      <div
+         className={`flex flex-col overflow-hidden transition-[height,_padding-bottom] duration-500 ${
+            showForm ? 'h-[300px] pb-10' : 'h-0 pb-0'
          }`}
-         style={{
-            transition: showForm
-               ? 'height 0.5s cubic-bezier(0.4, 0, 0.2, 1), margin-bottom 1s cubic-bezier(0.4, 0, 0.2, 1), border-width 0s'
-               : 'height 0.5s cubic-bezier(0.4, 0, 0.2, 1), margin-bottom 1s cubic-bezier(0.4, 0, 0.2, 1), border-width 0s 0.5s',
-         }}
-         onSubmit={onSubmit}
       >
-         <div className='flex flex-col'>
-            <TextControl
-               id='text'
-               placeholder='Aktivitet'
-               value={text}
-               setVal={setText}
-            />
-            <TextControl
-               id='date'
-               placeholder='Datum'
-               value={date}
-               setVal={setDate}
-            />
+         <form
+            className='overflow-hidden rounded-md border-2 border-black bg-[#f4f4f4] px-4'
+            onSubmit={onSubmit}
+         >
+            <div className='flex flex-col'>
+               <TextControl
+                  id='text'
+                  placeholder='Aktivitet'
+                  value={text}
+                  setVal={setText}
+               />
+               <TextControl
+                  id='date'
+                  placeholder='Datum'
+                  value={date}
+                  setVal={setDate}
+               />
 
-            <CheckControl
-               id='reminder'
-               isChecked={reminder}
-               setCheck={setReminder}
-            />
+               <CheckControl
+                  id='reminder'
+                  isChecked={reminder}
+                  setCheck={setReminder}
+               />
 
-            <Submit value='Spara' />
-         </div>
-      </form>
+               <Submit value='Spara' />
+            </div>
+         </form>
+      </div>
    )
 }
 
