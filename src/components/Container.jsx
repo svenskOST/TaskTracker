@@ -117,7 +117,7 @@ function Container() {
                onToggle={toggleReminder}
             />
          ) : (
-            <p style={{ textAlign: 'center', marginTop: '70px' }}>
+            <p className='text-center my-10'>
                Hurra! Inget att göra...
             </p>
          )}
