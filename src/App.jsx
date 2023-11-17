@@ -1,10 +1,15 @@
-import Container from './components/Container'
+import { Route, Routes } from 'react-router'
+import Register from './pages/Register.jsx'
+import Login from './pages/Login.jsx'
+import Manager from './pages/Manager.jsx'
 
 function App() {
    return (
-      <div className='absolute flex min-h-screen w-screen items-center justify-center bg-[#eeeeee]'>
-         <Container />
-      </div>
+      <Routes>
+         <Route path='/' element={<Register />}></Route>
+         <Route path='/login' element={<Login />}></Route>
+         <Route path='/manager' element={<Manager />}></Route>
+      </Routes>
    )
 }
 

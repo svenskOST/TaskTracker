@@ -48,7 +48,7 @@ function Container() {
       } catch (error) {
          setTasks((prevTasks) => [
             ...prevTasks,
-            { id: id, text: 'Network error while toggling reminder'},
+            { id: id, text: 'Network error while toggling reminder' },
          ])
       }
    }
@@ -117,9 +117,7 @@ function Container() {
                onToggle={toggleReminder}
             />
          ) : (
-            <p className='text-center my-10'>
-               Hurra! Inget att göra...
-            </p>
+            <p className='my-10 text-center'>Hurra! Inget att göra...</p>
          )}
       </div>
    )

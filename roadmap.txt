@@ -1,0 +1,7 @@
+- Konto funktioner, logga in, registrera, endast hantera tasks kopplade till sitt konto.
+
+- Mobilanpassning, responsivitet.
+
+- Säkerhet, prepared statements för att förhindra SQL injections, https och SSL, password hash.
+
+- Hosting, databas och webbsida.
