@@ -7,7 +7,7 @@ import CheckControl from './CheckControl'
 function Form({ showForm, onAdd }) {
    const [text, setText] = useState('')
    const [date, setDate] = useState('')
-   const [reminder, setReminder] = useState(false)
+   const [localReminder, setLocalReminder] = useState(false)
 
    function onSubmit(e) {
       e.preventDefault()
@@ -17,17 +17,25 @@ function Form({ showForm, onAdd }) {
          return
       }
 
+      var reminder
+
+      if (localReminder) {
+         reminder = 1
+      } else {
+         reminder = 0
+      }
+
       onAdd({ text, date, reminder })
 
       setText('')
       setDate('')
-      setReminder(false)
+      setLocalReminder(false)
    }
 
    return (
       <div
-         className={`flex flex-col overflow-hidden transition-[height,_padding-bottom] duration-500 ${
-            showForm ? 'h-[300px] pb-10' : 'h-0 pb-0'
+         className={`mx-4 flex flex-col overflow-hidden transition-[height,_margin-top] duration-500 ${
+            showForm ? 'mt-8 h-[300px]' : 'mt-0 h-0'
          }`}
       >
          <form
@@ -50,8 +58,8 @@ function Form({ showForm, onAdd }) {
 
                <CheckControl
                   id='reminder'
-                  isChecked={reminder}
-                  setCheck={setReminder}
+                  isChecked={localReminder}
+                  setCheck={setLocalReminder}
                />
 
                <Submit value='Spara' />

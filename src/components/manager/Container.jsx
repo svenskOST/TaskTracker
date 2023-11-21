@@ -14,6 +14,15 @@ function Container() {
                'http://localhost:8080/My%20Projects/Task-Tracker/api.php',
             )
             const data = await response.json()
+
+            for (let i = 0; i < data.length; i++) {
+               if (data[i].reminder == 0) {
+                  data[i].reminder = false
+               } else {
+                  data[i].reminder = true
+               }
+            }
+
             setTasks(data)
          } catch (error) {
             console.error('Error fetching data:', error)
@@ -63,14 +72,22 @@ function Container() {
                body: JSON.stringify(newTask),
             },
          )
+         const data = await response.json()
 
          if (!response.ok) {
             console.error('Failed adding task')
             return
          }
 
-         const updatedTasks = await response.json()
-         setTasks(updatedTasks)
+         for (let i = 0; i < data.length; i++) {
+            if (data[i].reminder == 0) {
+               data[i].reminder = false
+            } else {
+               data[i].reminder = true
+            }
+         }
+
+         setTasks(data)
       } catch (error) {
          console.error('Network error while adding task:', error)
       }
@@ -81,7 +98,7 @@ function Container() {
 
       try {
          const response = await fetch(
-            `http://localhost:8080/My%20Projects/Task-Tracker/api/tasks.php?id=${id}`,
+            `http://localhost:8080/My%20Projects/Task-Tracker/api.php?id=${id}`,
             {
                method: 'DELETE',
                headers: { 'Content-Type': 'application/json' },
@@ -103,7 +120,7 @@ function Container() {
    }
 
    return (
-      <div className='min-h-72 m-11 w-3/4 max-w-screen-sm rounded-md border-[3px] border-[steelblue] bg-[rgba(70,130,180,0.2)] p-8'>
+      <div className='min-h-72 m-11 w-3/4 max-w-screen-sm rounded-md border-[3px] border-[steelblue] bg-[rgba(70,130,180,0.2)] px-16 py-8'>
          <Header
             onToggle={() => setShowForm(!showForm)}
             title='Att göra'

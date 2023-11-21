@@ -30,9 +30,7 @@ function Form() {
             `http://localhost:8080/My%20Projects/Task-Tracker/api.php/register`,
             {
                method: 'POST',
-               headers: {
-                  'Content-Type': 'application/json',
-               },
+               headers: { 'Content-Type': 'application/json' },
                body: JSON.stringify(formData),
             },
          )
@@ -53,8 +51,13 @@ function Form() {
       <>
          {registrationComplete ? (
             <div className='flex h-fit flex-col rounded-md border-2 border-black bg-[#f4f4f4] px-4 text-center'>
-               <h2 className='text-xl mt-12'>Ditt konto har registrerats!</h2>
-               <Link to={'/login'} className='rounded-md bg-black px-5 mx-20 py-3 my-12 text-base text-white transition-transform hover:scale-105 active:scale-90'>Logga in</Link>
+               <h2 className='mt-12 text-xl'>Ditt konto har registrerats!</h2>
+               <Link
+                  to={'/login'}
+                  className='mx-20 my-12 rounded-md bg-black px-5 py-3 text-base text-white transition-transform hover:scale-105 active:scale-90'
+               >
+                  Logga in
+               </Link>
             </div>
          ) : (
             <form
