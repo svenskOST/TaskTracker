@@ -11,7 +11,7 @@ function Container() {
       async function fetchData() {
          try {
             const response = await fetch(
-               'http://localhost:8080/My%20Projects/Task-Tracker/api.php',
+               'http://localhost:8080/My%20Projects/Task-Tracker/api/tasks.php',
             )
             const data = await response.json()
             setTasks(data)
@@ -32,7 +32,7 @@ function Container() {
 
       try {
          const response = await fetch(
-            `http://localhost:8080/My%20Projects/Task-Tracker/api.php?id=${id}&reminder=${!reminder}`,
+            `http://localhost:8080/My%20Projects/Task-Tracker/api/tasks.php?id=${id}&reminder=${!reminder}`,
             {
                method: 'PATCH',
                headers: { 'Content-Type': 'application/json' },
@@ -56,7 +56,7 @@ function Container() {
    async function addTask(newTask) {
       try {
          const response = await fetch(
-            'http://localhost:8080/My%20Projects/Task-Tracker/api.php',
+            'http://localhost:8080/My%20Projects/Task-Tracker/api/tasks.php',
             {
                method: 'POST',
                headers: { 'Content-Type': 'application/json' },
@@ -81,7 +81,7 @@ function Container() {
 
       try {
          const response = await fetch(
-            `http://localhost:8080/My%20Projects/Task-Tracker/api.php?id=${id}`,
+            `http://localhost:8080/My%20Projects/Task-Tracker/api/tasks.php?id=${id}`,
             {
                method: 'DELETE',
                headers: { 'Content-Type': 'application/json' },
