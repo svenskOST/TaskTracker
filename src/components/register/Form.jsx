@@ -27,7 +27,7 @@ function Form() {
 
       try {
          const response = await fetch(
-            `http://localhost:8080/My%20Projects/Task-Tracker/api/users.php`,
+            `http://localhost:8080/My%20Projects/Task-Tracker/api.php/register`,
             {
                method: 'POST',
                headers: {

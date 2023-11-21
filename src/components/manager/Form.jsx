@@ -31,7 +31,7 @@ function Form({ showForm, onAdd }) {
          }`}
       >
          <form
-            className='overflow-hidden rounded-md border-2 border-black bg-[#f4f4f4] px-4'
+            className='overflow-hidden rounded-md border-2 border-black bg-[#f4f4f4] px-10'
             onSubmit={onSubmit}
          >
             <div className='flex flex-col'>
