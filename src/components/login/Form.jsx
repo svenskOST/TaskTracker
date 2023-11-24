@@ -38,6 +38,11 @@ function Form() {
 
          if (response.ok) {
             console.log('Login successfull')
+
+            const data = await response.json()
+            localStorage.setItem('userid', data.userid)
+            localStorage.setItem('username', data.username)
+            
             setFormData(empty)
             navigate('/manager')
          } else {

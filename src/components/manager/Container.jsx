@@ -7,21 +7,17 @@ function Container() {
    const [showForm, setShowForm] = useState(false)
    const [tasks, setTasks] = useState([])
 
+   const userid = localStorage.getItem('userid')
+
    useEffect(() => {
       async function fetchData() {
          try {
             const response = await fetch(
-               'http://localhost:8080/My%20Projects/Task-Tracker/api.php',
+               `http://localhost:8080/My%20Projects/Task-Tracker/api.php?userid=${userid}`,
             )
-            const data = await response.json()
+            var data = await response.json()
 
-            for (let i = 0; i < data.length; i++) {
-               if (data[i].reminder == 0) {
-                  data[i].reminder = false
-               } else {
-                  data[i].reminder = true
-               }
-            }
+            data = binaryToBool(data)
 
             setTasks(data)
          } catch (error) {
@@ -30,7 +26,7 @@ function Container() {
       }
 
       fetchData()
-   }, [])
+   }, [userid])
 
    async function toggleReminder(id, reminder) {
       setTasks(
@@ -65,27 +61,21 @@ function Container() {
    async function addTask(newTask) {
       try {
          const response = await fetch(
-            'http://localhost:8080/My%20Projects/Task-Tracker/api.php/addTask',
+            `http://localhost:8080/My%20Projects/Task-Tracker/api.php/addTask/?userid=${userid}`,
             {
                method: 'POST',
                headers: { 'Content-Type': 'application/json' },
                body: JSON.stringify(newTask),
             },
          )
-         const data = await response.json()
+         var data = await response.json()
 
          if (!response.ok) {
             console.error('Failed adding task')
             return
          }
 
-         for (let i = 0; i < data.length; i++) {
-            if (data[i].reminder == 0) {
-               data[i].reminder = false
-            } else {
-               data[i].reminder = true
-            }
-         }
+         data = binaryToBool(data)
 
          setTasks(data)
       } catch (error) {
@@ -117,6 +107,18 @@ function Container() {
             { id: id, text: 'Network error during removal' },
          ])
       }
+   }
+
+   function binaryToBool(data) {
+      for (let i = 0; i < data.length; i++) {
+         if (data[i].reminder == 0) {
+            data[i].reminder = false
+         } else {
+            data[i].reminder = true
+         }
+      }
+
+      return data
    }
 
    return (
