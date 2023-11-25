@@ -38,11 +38,8 @@ function Form({ showForm, onAdd }) {
             showForm ? 'mt-8 h-[300px]' : 'mt-0 h-0'
          }`}
       >
-         <form
-            className='overflow-hidden rounded-md border-2 border-black bg-[#f4f4f4] px-10'
-            onSubmit={onSubmit}
-         >
-            <div className='flex flex-col'>
+         <div className='overflow-hidden rounded-md border-2 border-black bg-[#f4f4f4] px-10'>
+            <form className='flex flex-col' onSubmit={onSubmit}>
                <TextControl
                   id='text'
                   placeholder='Aktivitet'
@@ -63,8 +60,8 @@ function Form({ showForm, onAdd }) {
                />
 
                <Submit value='Spara' />
-            </div>
-         </form>
+            </form>
+         </div>
       </div>
    )
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 function Tasks({ tasks, onRemove, onToggle }) {
    return (
-      <>
+      <ul>
          {tasks.map((task) => (
             <Task
                key={task.id}
@@ -12,7 +12,7 @@ function Tasks({ tasks, onRemove, onToggle }) {
                onToggle={onToggle}
             />
          ))}
-      </>
+      </ul>
    )
 }
 
