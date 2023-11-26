@@ -8,7 +8,7 @@ function Header({ title, onToggle, showForm }) {
          <Button
             color={`${!showForm ? 'green' : 'red'}`}
             text={`${!showForm ? 'Lägg till' : 'Avbryt'}`}
-            onClick={onToggle}
+            handleClick={onToggle}
          />
       </header>
    )
