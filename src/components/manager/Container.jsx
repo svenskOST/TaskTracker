@@ -10,23 +10,24 @@ function Container() {
    const userid = localStorage.getItem('userid')
 
    useEffect(() => {
-      async function fetchData() {
-         try {
-            const response = await fetch(
-               `http://localhost:8080/My%20Projects/Task-Tracker/api.php?userid=${userid}`,
-            )
-            var data = await response.json()
-
-            data = binaryToBool(data)
-
-            setTasks(data)
-         } catch (error) {
-            console.error('Error fetching data:', error)
-         }
-      }
-
       fetchData()
-   }, [userid])
+   // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [])
+
+   async function fetchData() {
+      try {
+         const response = await fetch(
+            `http://localhost:8080/My%20Projects/Task-Tracker/api.php?userid=${userid}`,
+         )
+         var data = await response.json()
+
+         data = binaryToBool(data)
+
+         setTasks(data)
+      } catch (error) {
+         console.error('Error fetching data:', error)
+      }
+   }
 
    async function toggleReminder(id, reminder) {
       setTasks(
@@ -68,16 +69,13 @@ function Container() {
                body: JSON.stringify(newTask),
             },
          )
-         var data = await response.json()
 
          if (!response.ok) {
             console.error('Failed adding task')
             return
          }
 
-         data = binaryToBool(data)
-
-         setTasks(data)
+         fetchData()
       } catch (error) {
          console.error('Network error while adding task:', error)
       }

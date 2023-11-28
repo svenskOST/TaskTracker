@@ -34,10 +34,10 @@ function Form({ showForm, onAdd }) {
 
    return (
       <div
-         className={`mx-4 flex flex-col overflow-hidden duration-500 ${
+         className={`mx-4 flex flex-col overflow-hidden transition-[height,_margin-top] duration-500 ${
             showForm
-               ? 'mt-8 h-[300px] transition-[height]'
-               : 'mt-0 h-0 transition-[height,_margin-top]'
+               ? 'mt-8 h-[300px]'
+               : 'mt-0 h-0'
          }`}
       >
          <div className='overflow-hidden rounded-md border-2 border-black bg-[#f4f4f4] px-10'>

@@ -2,6 +2,8 @@
 
 - Mobilanpassning, responsivitet.
 
+- Felhantering kopplad till front end för att ge användaren svar om felet i formulär osv.
+
 - Säkerhet, prepared statements för att förhindra SQL injections, https och SSL, password hash.
 
 - Hosting, databas och webbsida.
