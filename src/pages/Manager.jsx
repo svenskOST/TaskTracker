@@ -1,12 +1,22 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Container from '../components/manager/Container'
 import { MdAccountCircle } from 'react-icons/md'
 
 function Manager() {
+   const containerRef = useRef(null)
    const navigate = useNavigate()
 
    const [showNav, setShowNav] = useState(false)
+   const [showForm, setShowForm] = useState(false)
+
+   function handleClick(e) {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+         if (showForm) {
+            setShowForm(false)
+         }
+      }
+   }
 
    async function handleLogout() {
       try {
@@ -35,7 +45,9 @@ function Manager() {
 
    return (
       <>
-         <div className='absolute flex min-h-screen w-screen items-center justify-center bg-[#eeeeee]'>
+         <div className='absolute flex min-h-screen w-screen items-center justify-center bg-[#eeeeee]'
+            onClick={handleClick}
+         >
             <button
                className={`absolute left-0 top-0 mx-12 my-8 flex flex-col items-center overflow-hidden rounded-md border-2 border-[steelblue] bg-[rgba(70,130,180,0.2)] px-4 py-0 transition-[height_0.5s,_background-color_0.2s] duration-300 ${
                   showNav ? 'h-36 cursor-default hover:bg-[rgba(70,130,180,0.2)]' : 'h-[72px] hover:bg-[rgba(70,130,180,0.5)]'
@@ -58,7 +70,7 @@ function Manager() {
                   Logga ut
                </div>
             </button>
-            <Container />
+            <Container showForm={showForm} setShowForm={setShowForm} ref={containerRef} />
          </div>
       </>
    )

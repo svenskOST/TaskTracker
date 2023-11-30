@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react'
+import { forwardRef, useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import Header from './Header'
 import Tasks from './Tasks'
 import Form from './Form'
 
-function Container() {
-   const [showForm, setShowForm] = useState(false)
+const Container = forwardRef(function Container(props, ref) {
    const [tasks, setTasks] = useState([])
 
    const userid = localStorage.getItem('userid')
 
    useEffect(() => {
       fetchData()
-   // eslint-disable-next-line react-hooks/exhaustive-deps
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
    async function fetchData() {
@@ -120,13 +120,16 @@ function Container() {
    }
 
    return (
-      <main className='min-h-72 m-11 w-3/4 max-w-screen-sm rounded-md border-[3px] border-[steelblue] bg-[rgba(70,130,180,0.2)] px-16 py-8'>
+      <main
+         className='min-h-72 m-11 w-3/4 max-w-screen-sm rounded-md border-[3px] border-[steelblue] bg-[rgba(70,130,180,0.2)] px-16 py-8'
+         ref={ref}
+      >
          <Header
-            onToggle={() => setShowForm(!showForm)}
+            onToggle={() => props.setShowForm(!props.showForm)}
             title='Att göra'
-            showForm={showForm}
+            showForm={props.showForm}
          />
-         <Form showForm={showForm} onAdd={addTask} />
+         <Form showForm={props.showForm} onAdd={addTask} />
          {tasks.length > 0 ? (
             <Tasks
                tasks={tasks}
@@ -138,6 +141,12 @@ function Container() {
          )}
       </main>
    )
+})
+
+Container.propTypes = {
+   containerRef: PropTypes.object,
+   showForm: PropTypes.bool,
+   setShowForm: PropTypes.func,
 }
 
 export default Container
