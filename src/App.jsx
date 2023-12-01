@@ -8,30 +8,9 @@ function App() {
    return (
       <>
          <Routes>
-            <Route
-               path='/'
-               element={
-                  <>
-                     <Register />
-                  </>
-               }
-            ></Route>
-            <Route
-               path='/login'
-               element={
-                  <>
-                     <Login />
-                  </>
-               }
-            ></Route>
-            <Route
-               path='/manager'
-               element={
-                  <>
-                     <Manager />
-                  </>
-               }
-            ></Route>
+            <Route path='/' element={<Register />}></Route>
+            <Route path='/login' element={<Login />}></Route>
+            <Route path='/manager' element={<Manager />}></Route>
          </Routes>
       </>
    )

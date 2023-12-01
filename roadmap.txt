@@ -1,9 +1,5 @@
-- Session, JWT token och endast hantera tasks kopplade till sitt konto.
+- Felhantering kopplad till front end för att ge användaren svar om felet i formulär osv.
 
 - Mobilanpassning, responsivitet.
 
-- Felhantering kopplad till front end för att ge användaren svar om felet i formulär osv.
-
-- Säkerhet, prepared statements för att förhindra SQL injections, https och SSL, password hash.
-
-- Hosting, databas och webbsida.
+- Säkerhet, prepared statements för att förhindra SQL injections, https och SSL, password hash, session, JWT token, Cookie.

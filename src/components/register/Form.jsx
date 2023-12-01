@@ -11,7 +11,7 @@ function Form() {
    }
 
    const [formData, setFormData] = useState(empty)
-
+   const [errorMessages, setErrorMessages] = useState(empty)
    const [registrationComplete, setRegistrationComplete] = useState(false)
 
    function handleChange(e) {
@@ -22,8 +22,30 @@ function Form() {
       })
    }
 
+   function fieldValidation(field, message) {
+      if (!formData[field]) {
+         setErrorMessages((prevErrorMessages) => ({
+            ...prevErrorMessages,
+            [field]: message,
+         }))
+      } else {
+         setErrorMessages((prevErrorMessages) => ({
+            ...prevErrorMessages,
+            [field]: '',
+         }))
+      }
+   }
+
    async function handleSubmit(e) {
       e.preventDefault()
+
+      if (!formData.username || !formData.email || !formData.password) {
+         fieldValidation('username', 'Ange ett användarnamn')
+         fieldValidation('email', 'Ange din mailadress')
+         fieldValidation('password', 'Ange ett lösenord')
+         
+         return
+      }
 
       try {
          const response = await fetch(
@@ -66,6 +88,7 @@ function Form() {
             >
                <TextControl
                   id='username'
+                  errorMessage={errorMessages.username}
                   type='text'
                   placeholder='Användarnamn'
                   value={formData.username}
@@ -74,6 +97,7 @@ function Form() {
                />
                <TextControl
                   id='email'
+                  errorMessage={errorMessages.email}
                   type='email'
                   placeholder='Mailadress'
                   value={formData.email}
@@ -82,6 +106,7 @@ function Form() {
                />
                <TextControl
                   id='password'
+                  errorMessage={errorMessages.password}
                   type='password'
                   placeholder='Lösenord'
                   value={formData.password}
