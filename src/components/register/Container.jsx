@@ -1,6 +1,6 @@
 import Header from '../global/Header'
 import Form from './Form'
-import Footer from './Footer'
+import Footer from '../global/Footer'
 
 function Container() {
    return (

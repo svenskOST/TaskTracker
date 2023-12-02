@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import Submit from './Submit'
-import TextControl from './TextControl'
+import TextControl from '../global/TextControl'
 import CheckControl from './CheckControl'
 
 function Form({ showForm, onAdd }) {
@@ -42,15 +42,21 @@ function Form({ showForm, onAdd }) {
             <form className='flex flex-col' onSubmit={onSubmit}>
                <TextControl
                   id='text'
+                  errorMessage={''}
+                  type={'text'}
                   placeholder='Aktivitet'
                   value={text}
-                  setVal={setText}
+                  auto={'on'}
+                  handleChange={setText}
                />
                <TextControl
                   id='date'
+                  errorMessage={''}
+                  type={'datetime-local'}
                   placeholder='Datum'
                   value={date}
-                  setVal={setDate}
+                  auto={'off'}
+                  handleChange={setDate}
                />
 
                <CheckControl
