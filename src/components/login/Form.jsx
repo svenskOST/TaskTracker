@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import TextControl from '../global/TextControl'
-import Submit from './Submit'
+import Submit from '../global/Submit'
 
 function Form() {
    const navigate = useNavigate()
@@ -42,7 +42,7 @@ function Form() {
       if (!formData.username || !formData.password) {
          fieldValidation('username', 'Ange ditt användarnamn')
          fieldValidation('password', 'Ange ditt lösenord')
-         
+
          return
       }
 
@@ -64,7 +64,7 @@ function Form() {
             const data = await response.json()
             localStorage.setItem('userid', data.userid)
             localStorage.setItem('username', data.username)
-            
+
             setFormData(empty)
             navigate('/manager')
          } else {

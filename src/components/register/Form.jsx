@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import TextControl from '../global/TextControl'
-import Submit from './Submit'
+import Submit from '../global/Submit'
 
 function Form() {
    const empty = {
@@ -43,7 +43,7 @@ function Form() {
          fieldValidation('username', 'Ange ett användarnamn')
          fieldValidation('email', 'Ange din mailadress')
          fieldValidation('password', 'Ange ett lösenord')
-         
+
          return
       }
 
