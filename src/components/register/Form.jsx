@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import TextControl from './TextControl'
+import TextControl from '../global/TextControl'
 import Submit from './Submit'
 
 function Form() {

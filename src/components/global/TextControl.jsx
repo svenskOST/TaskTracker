@@ -11,7 +11,10 @@ function TextControl({
 }) {
    return (
       <div className='relative mt-8 h-10 px-5'>
-         <label className='left-5 -top-4 absolute text-sm text-red-500' htmlFor={id}>
+         <label
+            className='absolute -top-4 left-5 text-sm text-red-500 animate-bounce'
+            htmlFor={id}
+         >
             {errorMessage}
          </label>
          <input

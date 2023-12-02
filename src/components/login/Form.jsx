@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import TextControl from './TextControl'
+import TextControl from '../global/TextControl'
 import Submit from './Submit'
 
 function Form() {
@@ -12,6 +12,7 @@ function Form() {
    }
 
    const [formData, setFormData] = useState(empty)
+   const [errorMessages, setErrorMessages] = useState(empty)
 
    function handleChange(e) {
       const { name, value } = e.target
@@ -21,8 +22,29 @@ function Form() {
       })
    }
 
+   function fieldValidation(field, message) {
+      if (!formData[field]) {
+         setErrorMessages((prevErrorMessages) => ({
+            ...prevErrorMessages,
+            [field]: message,
+         }))
+      } else {
+         setErrorMessages((prevErrorMessages) => ({
+            ...prevErrorMessages,
+            [field]: '',
+         }))
+      }
+   }
+
    async function handleSubmit(e) {
       e.preventDefault()
+
+      if (!formData.username || !formData.password) {
+         fieldValidation('username', 'Ange ditt användarnamn')
+         fieldValidation('password', 'Ange ditt lösenord')
+         
+         return
+      }
 
       try {
          const response = await fetch(
@@ -60,6 +82,7 @@ function Form() {
       >
          <TextControl
             id='username'
+            errorMessage={errorMessages.username}
             type='text'
             placeholder='Användarnamn'
             value={formData.username}
@@ -68,6 +91,7 @@ function Form() {
          />
          <TextControl
             id='password'
+            errorMessage={errorMessages.password}
             type='password'
             placeholder='Lösenord'
             value={formData.password}
