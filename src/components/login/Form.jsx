@@ -2,6 +2,12 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import TextControl from '../global/TextControl'
 import Submit from '../global/Submit'
+import {
+   handleChange,
+   fieldValidation,
+   feedback,
+   clear,
+} from '../../helpers/formFunctions'
 
 function Form() {
    const navigate = useNavigate()
@@ -14,34 +20,23 @@ function Form() {
    const [formData, setFormData] = useState(empty)
    const [errorMessages, setErrorMessages] = useState(empty)
 
-   function handleChange(e) {
-      const { name, value } = e.target
-      setFormData({
-         ...formData,
-         [name]: value,
-      })
-   }
-
-   function fieldValidation(field, message) {
-      if (!formData[field]) {
-         setErrorMessages((prevErrorMessages) => ({
-            ...prevErrorMessages,
-            [field]: message,
-         }))
-      } else {
-         setErrorMessages((prevErrorMessages) => ({
-            ...prevErrorMessages,
-            [field]: '',
-         }))
-      }
-   }
-
    async function handleSubmit(e) {
+      clear(setErrorMessages, empty)
       e.preventDefault()
 
       if (!formData.username || !formData.password) {
-         fieldValidation('username', 'Ange ditt användarnamn')
-         fieldValidation('password', 'Ange ditt lösenord')
+         fieldValidation(
+            'username',
+            'Ange ditt användarnamn',
+            formData,
+            setErrorMessages,
+         )
+         fieldValidation(
+            'password',
+            'Ange ditt lösenord',
+            formData,
+            setErrorMessages,
+         )
 
          return
       }
@@ -58,18 +53,27 @@ function Form() {
             },
          )
 
-         if (response.ok) {
-            console.log('Login successfull')
+         const data = await response.json()
 
-            const data = await response.json()
+         if (response.ok) {
             localStorage.setItem('userid', data.userid)
             localStorage.setItem('username', data.username)
 
             setFormData(empty)
             navigate('/manager')
-         } else {
-            console.error('Login failed')
-         }
+         } else
+            switch (response.status) {
+               case 404:
+                  feedback('username', data, setErrorMessages)
+                  break
+               case 401:
+                  feedback('password', data, setErrorMessages)
+                  break
+               case 400:
+                  feedback('username', data, setErrorMessages)
+                  feedback('password', data, setErrorMessages)
+                  break
+            }
       } catch (error) {
          console.error('Error:', error)
       }
@@ -88,6 +92,8 @@ function Form() {
             value={formData.username}
             auto='username'
             handleChange={handleChange}
+            formData={formData}
+            setFormData={setFormData}
          />
          <TextControl
             id='password'
@@ -97,6 +103,8 @@ function Form() {
             value={formData.password}
             auto='current-password'
             handleChange={handleChange}
+            formData={formData}
+            setFormData={setFormData}
          />
          <Submit value='Logga in' />
       </form>

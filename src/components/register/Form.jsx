@@ -2,6 +2,12 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import TextControl from '../global/TextControl'
 import Submit from '../global/Submit'
+import {
+   handleChange,
+   fieldValidation,
+   feedback,
+   clear,
+} from '../../helpers/formFunctions'
 
 function Form() {
    const empty = {
@@ -14,35 +20,35 @@ function Form() {
    const [errorMessages, setErrorMessages] = useState(empty)
    const [registrationComplete, setRegistrationComplete] = useState(false)
 
-   function handleChange(e) {
-      const { name, value } = e.target
-      setFormData({
-         ...formData,
-         [name]: value,
-      })
-   }
-
-   function fieldValidation(field, message) {
-      if (!formData[field]) {
-         setErrorMessages((prevErrorMessages) => ({
-            ...prevErrorMessages,
-            [field]: message,
-         }))
-      } else {
-         setErrorMessages((prevErrorMessages) => ({
-            ...prevErrorMessages,
-            [field]: '',
-         }))
-      }
+   function allFieldsError(data) {
+      feedback('username', data, setErrorMessages)
+      feedback('email', data, setErrorMessages)
+      feedback('password', data, setErrorMessages)
    }
 
    async function handleSubmit(e) {
+      clear(setErrorMessages, empty)
       e.preventDefault()
 
       if (!formData.username || !formData.email || !formData.password) {
-         fieldValidation('username', 'Ange ett användarnamn')
-         fieldValidation('email', 'Ange din mailadress')
-         fieldValidation('password', 'Ange ett lösenord')
+         fieldValidation(
+            'username',
+            'Ange ett användarnamn',
+            formData,
+            setErrorMessages,
+         )
+         fieldValidation(
+            'email',
+            'Ange din mailadress',
+            formData,
+            setErrorMessages,
+         )
+         fieldValidation(
+            'password',
+            'Ange ett lösenord',
+            formData,
+            setErrorMessages,
+         )
 
          return
       }
@@ -57,13 +63,23 @@ function Form() {
             },
          )
 
+         const data = await response.json()
+
          if (response.ok) {
-            console.log('Registration successfull')
             setFormData(empty)
             setRegistrationComplete(true)
-         } else {
-            console.error('Registration failed')
-         }
+         } else
+            switch (response.status) {
+               case 409:
+                  feedback('username', data, setErrorMessages)
+                  break
+               case 500:
+                  allFieldsError(data)
+                  break
+               case 400:
+                  allFieldsError(data)
+                  break
+            }
       } catch (error) {
          console.error('Error:', error)
       }
@@ -94,6 +110,8 @@ function Form() {
                   value={formData.username}
                   auto='username'
                   handleChange={handleChange}
+                  formData={formData}
+                  setFormData={setFormData}
                />
                <TextControl
                   id='email'
@@ -103,6 +121,8 @@ function Form() {
                   value={formData.email}
                   auto='email'
                   handleChange={handleChange}
+                  formData={formData}
+                  setFormData={setFormData}
                />
                <TextControl
                   id='password'
@@ -112,6 +132,8 @@ function Form() {
                   value={formData.password}
                   auto='new-password'
                   handleChange={handleChange}
+                  formData={formData}
+                  setFormData={setFormData}
                />
                <Submit value='Skapa konto' />
             </form>

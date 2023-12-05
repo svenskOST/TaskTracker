@@ -8,6 +8,8 @@ function TextControl({
    value,
    auto,
    handleChange,
+   formData,
+   setFormData,
 }) {
    return (
       <div className='relative mt-8 h-10 px-5'>
@@ -25,7 +27,7 @@ function TextControl({
             placeholder={placeholder}
             value={value}
             autoComplete={auto}
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => handleChange(e, formData, setFormData)}
          />
       </div>
    )
@@ -39,6 +41,8 @@ TextControl.propTypes = {
    value: PropTypes.string,
    auto: PropTypes.string,
    handleChange: PropTypes.func,
+   formData: PropTypes.object,
+   setFormData: PropTypes.func,
 }
 
 export default TextControl
