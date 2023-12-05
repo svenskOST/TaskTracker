@@ -10,7 +10,7 @@ function Task({ task, onRemove, onToggle }) {
          onDoubleClick={() => onToggle(task.id, task.reminder)}
       >
          <h3 className='flex select-none items-center justify-between text-xl'>
-            {task.text}{' '}
+            {task.task}{' '}
             <HiOutlineXMark
                className='cursor-pointer text-[red] transition-transform hover:scale-125 active:scale-90'
                onClick={() => onRemove(task.id)}

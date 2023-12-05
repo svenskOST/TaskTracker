@@ -5,6 +5,7 @@ import Tasks from './Tasks'
 import Form from './Form'
 
 const Container = forwardRef(function Container(props, ref) {
+   
    const [tasks, setTasks] = useState([])
 
    const userid = localStorage.getItem('userid')
@@ -19,13 +20,14 @@ const Container = forwardRef(function Container(props, ref) {
          const response = await fetch(
             `http://localhost:8080/My%20Projects/Task-Tracker/api.php?userid=${userid}`,
          )
+         
          var data = await response.json()
 
          data = binaryToBool(data)
 
          setTasks(data)
       } catch (error) {
-         console.error('Error fetching data:', error)
+         console.error('Error:', error)
       }
    }
 
@@ -56,28 +58,6 @@ const Container = forwardRef(function Container(props, ref) {
             ...prevTasks,
             { id: id, text: 'Network error while toggling reminder' },
          ])
-      }
-   }
-
-   async function addTask(newTask) {
-      try {
-         const response = await fetch(
-            `http://localhost:8080/My%20Projects/Task-Tracker/api.php/addTask/?userid=${userid}`,
-            {
-               method: 'POST',
-               headers: { 'Content-Type': 'application/json' },
-               body: JSON.stringify(newTask),
-            },
-         )
-
-         if (!response.ok) {
-            console.error('Failed adding task')
-            return
-         }
-
-         fetchData()
-      } catch (error) {
-         console.error('Network error while adding task:', error)
       }
    }
 
@@ -129,7 +109,7 @@ const Container = forwardRef(function Container(props, ref) {
             title='Att göra'
             showForm={props.showForm}
          />
-         <Form showForm={props.showForm} onAdd={addTask} />
+         <Form showForm={props.showForm} userid={userid} />
          {tasks.length > 0 ? (
             <Tasks
                tasks={tasks}
