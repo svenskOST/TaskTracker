@@ -5,7 +5,7 @@ function CheckControl({
    type,
    placeholder,
    value,
-   handleChange,
+   handleCheckChange,
    formData,
    setFormData,
 }) {
@@ -19,7 +19,9 @@ function CheckControl({
             type={type}
             checked={value}
             value={value}
-            onChange={(e) => handleChange(e, formData, setFormData)}
+            onChange={(e) =>
+               handleCheckChange(e.currentTarget.checked, formData, setFormData)
+            }
          />
       </div>
    )
@@ -27,13 +29,13 @@ function CheckControl({
 
 CheckControl.propTypes = {
    id: PropTypes.string,
-   errorMessage: PropTypes.string ,
-   type: PropTypes.string ,
-   placeholder: PropTypes.string ,
-   value: PropTypes.bool ,
-   handleChange: PropTypes.func ,
-   formData: PropTypes.object ,
-   setFormData: PropTypes.func ,
+   errorMessage: PropTypes.string,
+   type: PropTypes.string,
+   placeholder: PropTypes.string,
+   value: PropTypes.bool,
+   handleCheckChange: PropTypes.func,
+   formData: PropTypes.object,
+   setFormData: PropTypes.func,
 }
 
 export default CheckControl

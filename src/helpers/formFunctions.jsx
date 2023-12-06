@@ -6,6 +6,13 @@ export function handleChange(e, formData, setFormData) {
    })
 }
 
+export function handleCheckChange(value, formData, setFormData) {
+   setFormData({
+      ...formData,
+      'reminder': value,
+   })
+}
+
 export function fieldValidation(field, message, formData, setErrorMessages) {
    if (!formData[field]) {
       setErrorMessages((prevErrorMessages) => ({

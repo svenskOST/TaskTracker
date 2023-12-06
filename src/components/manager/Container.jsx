@@ -109,7 +109,7 @@ const Container = forwardRef(function Container(props, ref) {
             title='Att göra'
             showForm={props.showForm}
          />
-         <Form showForm={props.showForm} userid={userid} />
+         <Form showForm={props.showForm} userid={userid} fetchData={fetchData} />
          {tasks.length > 0 ? (
             <Tasks
                tasks={tasks}

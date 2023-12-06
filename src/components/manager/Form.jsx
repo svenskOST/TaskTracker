@@ -5,12 +5,13 @@ import CheckControl from './CheckControl'
 import Submit from './Submit'
 import {
    handleChange,
+   handleCheckChange,
    fieldValidation,
    feedback,
    clear,
 } from '../../helpers/formFunctions'
 
-function Form({ showForm, userid }) {
+function Form({ showForm, userid, fetchData }) {
    const empty = {
       task: '',
       date: '2023-12-31T23:59',
@@ -46,16 +47,6 @@ function Form({ showForm, userid }) {
          return
       }
 
-      /*
-      var reminder
-
-      if (formData.reminder) {
-         reminder = 1
-      } else {
-         reminder = 0
-      }
-      */
-
       try {
          const response = await fetch(
             `http://localhost:8080/My%20Projects/Task-Tracker/api.php/addTask/?userid=${userid}`,
@@ -70,6 +61,7 @@ function Form({ showForm, userid }) {
 
          if (response.ok) {
             setFormData(empty)
+            fetchData()
          } else
             switch (response.status) {
                case 500:
@@ -119,7 +111,7 @@ function Form({ showForm, userid }) {
                   type='checkbox'
                   placeholder='Påminnelse'
                   value={formData.reminder}
-                  handleChange={handleChange}
+                  handleCheckChange={handleCheckChange}
                   formData={formData}
                   setFormData={setFormData}
                />
@@ -134,6 +126,7 @@ function Form({ showForm, userid }) {
 Form.propTypes = {
    userid: PropTypes.string,
    showForm: PropTypes.bool,
+   fetchData: PropTypes.func,
 }
 
 export default Form
