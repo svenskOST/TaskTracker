@@ -1,4 +1,4 @@
-- Felhantering kopplad till front end för att ge användaren svar om felet i formulär osv.
+KLART Felhantering kopplad till frontend för att ge användaren svar om felet i formulär osv.
 
 - Mobilanpassning, responsivitet.
 
