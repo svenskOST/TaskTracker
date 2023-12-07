@@ -1,7 +1,5 @@
 KLART Felhantering kopplad till frontend för att ge användaren svar om felet i formulär osv.
 
-- Se över namn för funktioner, handlers osv. (handleChange, addTask och sånt)
+- Säkerhet, prepared statements för att förhindra SQL injections, https och SSL, password hash, session, JWT token, Cookie.
 
 - Mobilanpassning, responsivitet.
-
-- Säkerhet, prepared statements för att förhindra SQL injections, https och SSL, password hash, session, JWT token, Cookie.
