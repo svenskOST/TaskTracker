@@ -5,3 +5,5 @@ KLART Säkerhet, prepared statements för att förhindra SQL injections, https o
 - Session, JWT token, Cookie.
 
 - Mobilanpassning, responsivitet.
+
+- Låta användare ändra användarnamn, email, lösenord, ta bort konto.
