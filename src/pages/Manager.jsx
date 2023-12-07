@@ -5,6 +5,7 @@ import { MdAccountCircle } from 'react-icons/md'
 
 function Manager() {
    const containerRef = useRef(null)
+   
    const navigate = useNavigate()
 
    const [showNav, setShowNav] = useState(false)
