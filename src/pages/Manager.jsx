@@ -45,7 +45,7 @@ function Manager() {
    return (
       <>
          <div
-            className='absolute flex min-h-screen w-screen items-center justify-center bg-[#eeeeee]'
+            className='absolute flex min-h-screen w-screen min-w-[340px] items-center justify-center bg-[#eeeeee]'
             onClick={handleClick}
          >
             <button

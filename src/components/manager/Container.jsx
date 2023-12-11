@@ -101,7 +101,7 @@ const Container = forwardRef(function Container(props, ref) {
 
    return (
       <main
-         className='min-h-72 m-11 w-3/4 max-w-screen-sm rounded-md border-[3px] border-[steelblue] bg-[rgba(70,130,180,0.2)] px-16 py-8'
+         className='min-h-72 w-[95%] max-w-screen-sm rounded-md border-[3px] border-[steelblue] bg-[rgba(70,130,180,0.2)] px-8 py-8 sm:px-16'
          ref={ref}
       >
          <Header

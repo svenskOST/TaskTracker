@@ -78,11 +78,11 @@ function Form({ showForm, userid, fetchData }) {
 
    return (
       <div
-         className={`mx-4 flex flex-col overflow-hidden transition-[height,_margin-top] duration-500 ${
+         className={`mx-0 xs:mx-4 flex flex-col overflow-hidden transition-[height,_margin-top] duration-500 ${
             showForm ? 'mt-8 h-[300px]' : 'mt-0 h-0'
          }`}
       >
-         <div className='overflow-hidden rounded-md border-2 border-black bg-[#f4f4f4] px-10'>
+         <div className='overflow-hidden rounded-md border-2 border-black bg-[#f4f4f4] px-5 xs:px-8 sm:px-10'>
             <form className='flex flex-col' onSubmit={handleSubmit}>
                <TextControl
                   id='task'

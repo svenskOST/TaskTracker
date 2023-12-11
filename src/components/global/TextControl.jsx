@@ -12,15 +12,15 @@ function TextControl({
    setFormData,
 }) {
    return (
-      <div className='relative mt-8 h-10 px-5'>
+      <div className='relative mt-8 h-10 xs:px-5 px-3'>
          <label
-            className='absolute -top-4 left-5 animate-bounce text-sm text-red-500'
+            className='absolute -top-2 xs:-top-4 left-5 animate-bounce text-xs xs:text-sm text-red-500'
             htmlFor={id}
          >
             {errorMessage}
          </label>
          <input
-            className='h-full w-full border-b-2 border-black bg-transparent px-2 pb-1 font-sans text-lg outline-none'
+            className='text-md h-full w-full border-b-2 border-black bg-transparent px-2 pb-0 font-sans outline-none xs:pb-1 xs:text-lg'
             id={id}
             name={id}
             type={type}

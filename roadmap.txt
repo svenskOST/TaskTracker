@@ -2,8 +2,10 @@ KLART Felhantering kopplad till frontend för att ge användaren svar om felet i
 
 KLART Säkerhet, prepared statements för att förhindra SQL injections, https och SSL, password hash, filter_input.
 
-- Session, JWT token, Cookie.
+PÅGÅENDE Mobilanpassning, responsivitet.
 
-- Mobilanpassning, responsivitet.
+- Toggle reminder funkar ej på mobil (dubbeklick som inte funkar?)
+
+- Session, JWT token, Cookie.
 
 - Låta användare ändra användarnamn, email, lösenord, ta bort konto.
