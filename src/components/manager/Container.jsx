@@ -18,7 +18,7 @@ const Container = forwardRef(function Container(props, ref) {
    async function fetchData() {
       try {
          const response = await fetch(
-            `http://localhost:8080/My%20Projects/Task-Tracker/api.php?userid=${userid}`,
+            `http://localhost:8080/My%20Projects/Task%20Tracker/api.php?userid=${userid}`,
          )
          
          var data = await response.json()
@@ -40,7 +40,7 @@ const Container = forwardRef(function Container(props, ref) {
 
       try {
          const response = await fetch(
-            `http://localhost:8080/My%20Projects/Task-Tracker/api.php?id=${id}&reminder=${!reminder}`,
+            `http://localhost:8080/My%20Projects/Task%20Tracker/api.php?id=${id}&reminder=${!reminder}`,
             {
                method: 'PATCH',
                headers: { 'Content-Type': 'application/json' },
@@ -66,7 +66,7 @@ const Container = forwardRef(function Container(props, ref) {
 
       try {
          const response = await fetch(
-            `http://localhost:8080/My%20Projects/Task-Tracker/api.php?id=${id}`,
+            `http://localhost:8080/My%20Projects/Task%20Tracker/api.php?id=${id}`,
             {
                method: 'DELETE',
                headers: { 'Content-Type': 'application/json' },

@@ -22,7 +22,7 @@ function Manager() {
    async function handleLogout() {
       try {
          const response = await fetch(
-            `http://localhost:8080/My%20Projects/Task-Tracker/api.php/logout`,
+            `http://localhost:8080/My%20Projects/Task%20Tracker/api.php/logout`,
             {
                method: 'POST',
                headers: {
