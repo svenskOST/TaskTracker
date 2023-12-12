@@ -9,3 +9,5 @@ KLART Mobilanpassning, responsivitet.
 - Session, JWT token, Cookie.
 
 - Låta användare ändra användarnamn, email, lösenord, ta bort konto.
+
+- Mailfunktioner, glömt lösenord, skicka mail osv.
