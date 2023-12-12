@@ -2,7 +2,7 @@ KLART Felhantering kopplad till frontend för att ge användaren svar om felet i
 
 KLART Säkerhet, prepared statements för att förhindra SQL injections, https och SSL, password hash, filter_input.
 
-PÅGÅENDE Mobilanpassning, responsivitet.
+KLART Mobilanpassning, responsivitet.
 
 - Toggle reminder funkar ej på mobil (dubbeklick som inte funkar?)
 

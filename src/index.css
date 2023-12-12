@@ -9,7 +9,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-   width: 15px;
+   width: 0.8vw;
 }
 
 ::-webkit-scrollbar-thumb {

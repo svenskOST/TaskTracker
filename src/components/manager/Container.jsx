@@ -5,7 +5,6 @@ import Tasks from './Tasks'
 import Form from './Form'
 
 const Container = forwardRef(function Container(props, ref) {
-   
    const [tasks, setTasks] = useState([])
 
    const userid = localStorage.getItem('userid')
@@ -20,7 +19,7 @@ const Container = forwardRef(function Container(props, ref) {
          const response = await fetch(
             `http://localhost:8080/My%20Projects/Task%20Tracker/api.php?userid=${userid}`,
          )
-         
+
          var data = await response.json()
 
          data = binaryToBool(data)
@@ -101,7 +100,7 @@ const Container = forwardRef(function Container(props, ref) {
 
    return (
       <main
-         className='min-h-72 w-[95%] max-w-screen-sm rounded-md border-[3px] border-[steelblue] bg-[rgba(70,130,180,0.2)] px-8 py-8 sm:px-16'
+         className='min-h-72 relative my-8 w-[95%] max-w-screen-sm rounded-md border-[3px] border-[steelblue] bg-[rgba(70,130,180,0.2)] px-8 py-8 sm:px-16 xl:-top-[5vh]'
          ref={ref}
       >
          <Header
@@ -109,7 +108,11 @@ const Container = forwardRef(function Container(props, ref) {
             title='Att göra'
             showForm={props.showForm}
          />
-         <Form showForm={props.showForm} userid={userid} fetchData={fetchData} />
+         <Form
+            showForm={props.showForm}
+            userid={userid}
+            fetchData={fetchData}
+         />
          {tasks.length > 0 ? (
             <Tasks
                tasks={tasks}

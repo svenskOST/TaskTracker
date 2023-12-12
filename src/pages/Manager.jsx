@@ -45,38 +45,42 @@ function Manager() {
    return (
       <>
          <div
-            className='absolute flex min-h-screen w-screen min-w-[340px] items-center justify-center bg-[#eeeeee]'
+            className='absolute flex min-h-screen w-screen min-w-[340px] flex-col bg-[#eeeeee]'
             onClick={handleClick}
          >
-            <button
-               className={`absolute left-0 top-0 mx-12 my-8 flex flex-col items-center overflow-hidden rounded-md border-2 border-[steelblue] bg-[rgba(70,130,180,0.2)] px-4 py-0 transition-[height_0.5s,_background-color_0.2s] duration-300 ${
-                  showNav
-                     ? 'h-36 cursor-default hover:bg-[rgba(70,130,180,0.2)]'
-                     : 'h-[72px] hover:bg-[rgba(70,130,180,0.5)]'
-               }`}
-               onClick={() => setShowNav(!showNav)}
-               onBlur={() => setShowNav(false)}
-            >
-               <div className='mb-4 mt-[10px] flex items-center'>
-                  <MdAccountCircle className='mr-4 text-5xl' />
-                  <div>
-                     <h3 className='text-xl'>
-                        {localStorage.getItem('username')}
-                     </h3>
-                  </div>
-               </div>
-               <div
-                  className='m-1 inline-block cursor-pointer select-none rounded-md bg-black px-5 py-3 text-base text-white transition-transform hover:scale-110 active:scale-90'
-                  onClick={handleLogout}
+            <section className='h-fit w-screen'>
+               <button
+                  className={`sm:mx-12 mx-[2.5%] my-8 flex flex-col items-center overflow-hidden rounded-md border-2 border-[steelblue] bg-[rgba(70,130,180,0.2)] px-4 py-0 transition-[height_0.5s,_background-color_0.2s] duration-300 ${
+                     showNav
+                        ? 'h-36 cursor-default hover:bg-[rgba(70,130,180,0.2)]'
+                        : 'h-[72px] hover:bg-[rgba(70,130,180,0.5)]'
+                  }`}
+                  onClick={() => setShowNav(!showNav)}
+                  onBlur={() => setShowNav(false)}
                >
-                  Logga ut
-               </div>
-            </button>
-            <Container
-               showForm={showForm}
-               setShowForm={setShowForm}
-               ref={containerRef}
-            />
+                  <div className='mb-4 mt-[10px] flex items-center'>
+                     <MdAccountCircle className='mr-4 text-5xl' />
+                     <div>
+                        <h3 className='text-xl'>
+                           {localStorage.getItem('username')}
+                        </h3>
+                     </div>
+                  </div>
+                  <div
+                     className='m-1 inline-block cursor-pointer select-none rounded-md bg-black px-5 py-3 text-base text-white transition-transform hover:scale-110 active:scale-90'
+                     onClick={handleLogout}
+                  >
+                     Logga ut
+                  </div>
+               </button>
+            </section>
+            <section className='flex w-screen flex-1 items-center justify-center'>
+               <Container
+                  showForm={showForm}
+                  setShowForm={setShowForm}
+                  ref={containerRef}
+               />
+            </section>
          </div>
       </>
    )
