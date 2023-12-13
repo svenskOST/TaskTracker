@@ -6,6 +6,8 @@ KLART Mobilanpassning, responsivitet.
 
 - Optimera för mobil, borders är lite tjocka, lite stor text, sidan laddas inte från längst upp, input fält borders är lite runda.
 
+- Router, kan inte komma åt subsidor direkt t.ex /task-tracker/login och kan inte refresha där heller.
+
 - Session, JWT token, Cookie.
 
 - Låta användare ändra användarnamn, email, lösenord, ta bort konto.
