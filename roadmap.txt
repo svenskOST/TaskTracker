@@ -4,10 +4,12 @@ KLART Säkerhet, prepared statements för att förhindra SQL injections, https o
 
 KLART Mobilanpassning, responsivitet.
 
-- Toggle reminder funkar ej på mobil (dubbeklick som inte funkar?)
+- Optimera för mobil, borders är lite tjocka, lite stor text, sidan laddas inte från längst upp, input fält borders är lite runda.
 
 - Session, JWT token, Cookie.
 
 - Låta användare ändra användarnamn, email, lösenord, ta bort konto.
+
+- Skriva lösenordet två gånger vid registrering, och villkor för ett minimum av lösenord t.ex. minst 8 tecken, 1 stor bokstav osv.
 
 - Mailfunktioner, glömt lösenord, skicka mail osv.
