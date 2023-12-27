@@ -48,9 +48,9 @@ function Manager() {
             className='absolute flex min-h-screen w-screen min-w-[340px] flex-col bg-[#eeeeee]'
             onClick={handleClick}
          >
-            <section className='h-fit xl:h-32 w-screen'>
+            <section className='h-fit w-screen xl:h-32'>
                <button
-                  className={`sm:mx-12 mx-[2.5%] my-8 flex flex-col items-center overflow-hidden rounded-md border-2 border-[steelblue] bg-[rgba(70,130,180,0.2)] px-4 py-0 transition-[height_0.5s,_background-color_0.2s] duration-300 ${
+                  className={`mx-[2.5%] my-8 flex flex-col items-center overflow-hidden rounded-md border-2 border-[steelblue] bg-[rgba(70,130,180,0.2)] px-4 py-0 transition-[height_0.5s,_background-color_0.2s] duration-300 sm:mx-12 ${
                      showNav
                         ? 'h-36 cursor-default hover:bg-[rgba(70,130,180,0.2)]'
                         : 'h-[72px] hover:bg-[rgba(70,130,180,0.5)]'
