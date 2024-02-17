@@ -15,8 +15,8 @@ $path = filter_input(INPUT_SERVER, 'REQUEST_URI');
 $parts = explode('/', $path);
 $num_parts = count($parts);
 
-if ($num_parts > 4) {
-    $action = $parts[4];
+if ($num_parts > 6) {
+    $action = $parts[6];
 }
 
 $userid = filter_input(INPUT_GET, 'userid', FILTER_SANITIZE_NUMBER_INT);

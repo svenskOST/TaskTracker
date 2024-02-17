@@ -17,7 +17,7 @@ const Container = forwardRef(function Container(props, ref) {
    async function fetchData() {
       try {
          const response = await fetch(
-            `http://localhost:8080/projects/Task%20Tracker/api.php?userid=${userid}`,
+            `https://elevsidor.kreativlink.se/app-och-webb/arskurs-3/task-tracker/api/api.php?userid=${userid}`,
          )
 
          var data = await response.json()
@@ -39,7 +39,7 @@ const Container = forwardRef(function Container(props, ref) {
 
       try {
          const response = await fetch(
-            `http://localhost:8080/projects/Task%20Tracker/api.php?id=${id}&reminder=${!reminder}`,
+            `https://elevsidor.kreativlink.se/app-och-webb/arskurs-3/task-tracker/api/api.php?id=${id}&reminder=${!reminder}`,
             {
                method: 'PATCH',
                headers: { 'Content-Type': 'application/json' },
@@ -65,7 +65,7 @@ const Container = forwardRef(function Container(props, ref) {
 
       try {
          const response = await fetch(
-            `http://localhost:8080/projects/Task%20Tracker/api.php?id=${id}`,
+            `https://elevsidor.kreativlink.se/app-och-webb/arskurs-3/task-tracker/api/api.php?id=${id}`,
             {
                method: 'DELETE',
                headers: { 'Content-Type': 'application/json' },

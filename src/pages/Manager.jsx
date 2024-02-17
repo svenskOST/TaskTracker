@@ -22,7 +22,7 @@ function Manager() {
    async function handleLogout() {
       try {
          const response = await fetch(
-            `http://localhost:8080/projects/Task%20Tracker/api.php/logout`,
+            `https://elevsidor.kreativlink.se/app-och-webb/arskurs-3/task-tracker/api/api.php/logout`,
             {
                method: 'POST',
                headers: {
