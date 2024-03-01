@@ -43,7 +43,7 @@ function Form() {
 
       try {
          const response = await fetch(
-            `https://elevsidor.kreativlink.se/app-och-webb/arskurs-3/task-tracker/api/api.php/login`,
+            `https://elevsidor.kreativlink.se/aw/arskurs-3/task-tracker/api/api.php/login`,
             {
                method: 'POST',
                headers: {

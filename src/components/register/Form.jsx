@@ -55,7 +55,7 @@ function Form() {
 
       try {
          const response = await fetch(
-            `https://elevsidor.kreativlink.se/app-och-webb/arskurs-3/task-tracker/api/api.php/register`,
+            `https://elevsidor.kreativlink.se/aw/arskurs-3/task-tracker/api/api.php/register`,
             {
                method: 'POST',
                headers: { 'Content-Type': 'application/json' },
