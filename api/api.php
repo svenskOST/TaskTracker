@@ -10,8 +10,8 @@ header('Access-Control-Allow-Methods: GET, PATCH, POST, DELETE');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Access-Control-Allow-Credentials: true');
 
-$method = filter_input(INPUT_SERVER, 'REQUEST_METHOD');
-$path = filter_input(INPUT_SERVER, 'REQUEST_URI');
+$method = $_SERVER['REQUEST_METHOD'];
+$path = $_SERVER['REQUEST_URI'];
 $parts = explode('/', $path);
 $num_parts = count($parts);
 
